@@ -2,11 +2,19 @@ package co.edu.uniquindio.proyecto.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.*;
+
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Prestamo implements Serializable {
     @Id
+    @EqualsAndHashCode.Include
     private String codigo;
 
     private String cedulaPersona;
@@ -14,51 +22,4 @@ public class Prestamo implements Serializable {
     private String fechaPrestamo;
 
     private String fechaDevolucion;
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getCedulaPersona() {
-        return cedulaPersona;
-    }
-
-    public void setCedulaPersona(String cedulaPersona) {
-        this.cedulaPersona = cedulaPersona;
-    }
-
-    public String getFechaPrestamo() {
-        return fechaPrestamo;
-    }
-
-    public void setFechaPrestamo(String fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public String getFechaDevolucion() {
-        return fechaDevolucion;
-    }
-
-    public void setFechaDevolucion(String fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Prestamo prestamo = (Prestamo) o;
-
-        return codigo.equals(prestamo.codigo);
-    }
-
-    @Override
-    public int hashCode() {
-        return codigo.hashCode();
-    }
 }
